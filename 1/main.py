@@ -3,12 +3,9 @@ from AthleteClass import Athlete
 print("................")
 print("=== añadir jugadores ===")
 print("................")
+
 option = 1
 registros = []
-
-# obj = {"name": "pepe", "age": 23}
-# print(f'{obj["age"]}')
-# print(f'{registros}')
 
 while(option != 0):
     print("")
@@ -33,14 +30,21 @@ while(option != 0):
 
     elif(option == 2):
         print(registros)
+
     elif(option == 3):
         menorTiempo = registros[0]["time"]
-        ganador = registros[0]
+        ganadores = []
         for obj in registros:
-            if(obj["time"] < menorTiempo):
+            if(obj["time"] <= menorTiempo):
                 menorTiempo = obj["time"]
-                ganador = obj
-        print(f'{ganador}')
+                ganadores.append(obj)
+
+        if(len(ganadores)>1):
+            print(f'L@s ganadores son: ')
+            print(f'{ganadores}')
+        else:
+            print(f'El ganador(a) es: ')
+            print(f'{ganadores[0]}')
 
     else:
         print("opción invalida")
@@ -50,4 +54,10 @@ while(option != 0):
     print("=== 1. Agregar nuevo jugador(a) ===")
     print("=== 2. Ver tod@s l@s jugador@s ===")
     print("=== 3. Ver ganador(a) ===")
-    option = int(input("¿Qué deseas hacer? "))
+    option = input("¿Qué deseas hacer? ")
+    
+    if(option.isdigit()):
+        option = int(option)
+    else:
+        option = 4
+    

@@ -5,30 +5,34 @@ class UserBank():
     def __init__(self):
         self.__name = ""
         self.__lastName = ""
-        self.__id = ""
-        self.country = ""
-        self.__nroCard = random.random() + self.__id
+        self.__userId = 0
+        self.__country = ""
         self.__currentBalance = 0
+        self.__nroCard = "card#"
 
     @property
     def name(self):
         return self.__name
 
     @property
-    def lastName(self, lastName):
+    def lastName(self):
         return self.__lastName
 
     @property
-    def id(self, id):
-        return self.__id
+    def userId(self):
+        return self.__userId
 
     @property
-    def country(self, country):
+    def country(self):
         return self.__country
 
     @property
     def currentBalance(self):
         return self.__currentBalance
+
+    @property
+    def nroCard(self):
+        return self.__nroCard
 
         # .....................................
 
@@ -40,9 +44,9 @@ class UserBank():
     def lastName(self, lastName):
         self.__lastName = lastName
 
-    @id.setter
-    def id(self, id):
-        self.__id = id
+    @userId.setter
+    def userId(self, userId):
+        self.__userId = userId
 
     @country.setter
     def country(self, country):
@@ -52,12 +56,18 @@ class UserBank():
     def currentBalance(self, currentBalance):
         self.__currentBalance = currentBalance
 
+    @nroCard.setter
+    def nroCard(self, nroCard):
+        self.__nroCard = nroCard
+
     def diccionary(self, ):
-        return {"name": self.__name, "lastName": self.__lastName, "country": self.__country, "nroCard": self.__nroCard, "currentBalance": self.__currentBalance}
+        return {"name": self.__name, "lastName": self.__lastName, "userId": self.__userId, "country": self.__country, "currentBalance": self.__currentBalance, "nroCard": self.__nroCard}
 
 
 # ........................Operationes...........................
 
     def moneyOut(self, quantity):
-        if(quantity <= self.__currentBalance):
             self.__currentBalance = self.__currentBalance - quantity
+
+    def moneyUp(self, quantity):
+            self.__currentBalance = self.__currentBalance + quantity
